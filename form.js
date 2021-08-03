@@ -1,8 +1,6 @@
 let form = document.querySelector('form');
 let areas = document.querySelectorAll('.area');
-let notice = document.querySelector('.notice');
-let closeBtn = document.querySelector('.close-btn');
-let text = document.querySelector('p');
+let button = document.querySelector('btn');
 
 const createNotice = (message, color) => {
     const notice = document.createElement('div');
@@ -47,10 +45,14 @@ form.onsubmit = function(evt) {
             "Origin": 'http://localhost:3000/',
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            // "Access-Control-Allow-Headers",
-            // "Origin, X-Requested-With, Content-Type, Accept"
         },
-        body: JSON.stringify(params)
+
+        body: `name=${params.name}&email=${params.email}&phone=${params.phone}`,
+
+    }).then(function(res) {
+        if (res.status !== 200) {
+            throw new Error();
+        }
     }).then(function() {
         console.log('good')
         createNotice("Все ок", "green")
@@ -61,5 +63,5 @@ form.onsubmit = function(evt) {
         createNotice("Все плохо", "red")
         console.log('bad')
     });
-    removeNotice()
+    button.onclick = removeNotice
 }
