@@ -1,4 +1,4 @@
-Написание скриптов для репозитория form-api-study-project
+Написание скриптов для репозитория https://github.com/bolshu/form-api-study-project
 
 Получение запросов с сервера с поле отправки формы
 
